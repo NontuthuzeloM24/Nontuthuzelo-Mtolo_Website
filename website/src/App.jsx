@@ -4,6 +4,7 @@ import Hero from './components/Hero.jsx'
 import WhatIDo from './components/WhatIDo.jsx'
 import HowItWorks from './components/HowItWorks.jsx'
 import MyWork from './components/MyWork.jsx'
+import Contacts from './components/Contacts.jsx'
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <WhatIDo />
       <HowItWorks />
       <MyWork />
+      <Contacts />
     </div>
   )
 }
