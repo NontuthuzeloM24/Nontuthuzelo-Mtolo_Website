@@ -4,7 +4,7 @@ const projects = [
   {
     title: "Portfolio Website",
     description: "A personal portfolio to showcase my work.",
-    image: "",
+    image: "./assets/portfolio.png",
     link: "https://nontuthuzelo-mtolo-portfolio.netlify.app/",
   },
   {
