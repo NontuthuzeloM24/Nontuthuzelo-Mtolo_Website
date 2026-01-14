@@ -10,13 +10,13 @@ const projects = [
   {
     title: "Podcast App",
     description: "A web app for streaming and managing podcasts.",
-    image: "src/assets/podcast-app.png",
+    image: "./assets/podcast.png",
     link: "https://nonmto-25498-fto-2506-group-b-nontu.vercel.app/",
   },
   {
     title: "Resume Project",
     description: "An online resume for professionals.",
-    image: "src/assets/resume-project.png",
+    image: "./assets/resume-project.png",
     link: "https://nontuthuzelo-mtolo-sdf-resume-project.netlify.app/",
   },
 ];
@@ -34,7 +34,7 @@ const MyWork = () => {
       <div>
         {projects.map((project, idx) => (
           <div key={idx}>
-            <img src={""} alt={project.title} />
+            <img src={project.image} alt={project.title} />
             <div>
               <h3>{project.title}</h3>
               <p>{project.description}</p>

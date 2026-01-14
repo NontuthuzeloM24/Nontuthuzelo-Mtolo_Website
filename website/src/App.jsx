@@ -3,6 +3,7 @@ import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import WhatIDo from './components/WhatIDo.jsx'
 import HowItWorks from './components/HowItWorks.jsx'
+import MyWork from './components/MyWork.jsx'
 import './App.css'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Hero />
       <WhatIDo />
       <HowItWorks />
+      <MyWork />
     </div>
   )
 }
