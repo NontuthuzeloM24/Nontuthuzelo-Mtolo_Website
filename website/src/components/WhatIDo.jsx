@@ -17,8 +17,7 @@ that works accros all devices.
             </div>
             <div>
                 {services.map((service, idx) => 
-                <div>
-                    key={idx}
+                <div key={idx}>
                     <h3>{service.title}</h3>
                     <p>{service.description}</p>
                 </div>

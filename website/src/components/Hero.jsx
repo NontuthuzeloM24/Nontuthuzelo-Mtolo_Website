@@ -9,7 +9,7 @@ const Hero = () => {
             <p>
                 I create clean, modern, mobile friendly websites that present you clearly and confidently.
             </p>
-            <a href="#contact" Get a website that represents you></a>
+            <a href="#contact">Get a website that represents you</a>
         </section>
     )
 }
