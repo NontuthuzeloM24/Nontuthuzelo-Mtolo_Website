@@ -5,6 +5,7 @@ import WhatIDo from './components/WhatIDo.jsx'
 import HowItWorks from './components/HowItWorks.jsx'
 import MyWork from './components/MyWork.jsx'
 import Contacts from './components/Contacts.jsx'
+import Footer from './components/Footer.jsx'
 import './App.css'
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <HowItWorks />
       <MyWork />
       <Contacts />
-      <footer />
+      <Footer />
     </div>
   )
 }
