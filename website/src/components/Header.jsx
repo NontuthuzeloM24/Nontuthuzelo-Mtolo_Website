@@ -4,21 +4,21 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header>
-      <div>
-        <div>
-          <h1>Nontuthuzelo's Website</h1>
-          <nav>
-            <a href="#whatido">
+    <header className="bg-white border-b">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <h1 className="font-bold text-xl">Nontuthuzelo's Website</h1>
+          <nav className="hidden md:flex space-x-8">
+            <a href="#whatido" className="text-gray-700 hover:text-black">
               What I Do
             </a>
-            <a href="#howitworks">
+            <a href="#howitworks" className="text-gray-700 hover:text-black">
               How It Works
             </a>
-            <a href="#mywork">
+            <a href="#mywork" className="text-gray-700 hover:text-black">
               My Work
             </a>
-            <a href="#contact">
+            <a href="#contact" className="text-gray-700 hover:text-black">
               Get In Touch
             </a>
           </nav>
