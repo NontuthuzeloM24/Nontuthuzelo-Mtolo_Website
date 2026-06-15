@@ -8,7 +8,7 @@ const Hero = () => {
           Designing and building custom websites for professionals who want to
           showcase their personal brand online
         </h1>
-        <p className="text-gray-600 text-base sm:text-lg md:text-xl mb-8 max-w3xl mx-auto">
+        <p className="text-gray-600 text-base sm:text-lg md:text-xl mb-8 max-w-3xl mx-auto">
           I create clean, modern, mobile friendly websites that present you
           clearly and confidently.
         </p>
