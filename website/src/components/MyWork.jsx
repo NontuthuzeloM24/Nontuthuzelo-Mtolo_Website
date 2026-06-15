@@ -4,19 +4,19 @@ const projects = [
   {
     title: "Portfolio Website",
     description: "A personal portfolio to showcase my work.",
-    image: "./assets/portfolio.png",
+    image: "./assets/myportfolio.png",
     link: "https://code-with-nontu.netlify.app/",
   },
   {
     title: "Podcast App",
     description: "A web app for streaming and managing podcasts.",
-    image: "./assets/podcast.png",
+    image: "./assets/apppodcast.png",
     link: "https://nonmto-25498-fto-2506-group-b-nontu.vercel.app/",
   },
   {
     title: "Resume Project",
     description: "An online resume for professionals.",
-    image: "assets/resume-project.png",
+    image: "./assets/resumeproject.png",
     link: "https://nontuthuzelo-mtolo-sdf-resume-project.netlify.app/",
   },
 ];
