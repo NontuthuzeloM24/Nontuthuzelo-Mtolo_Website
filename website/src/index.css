@@ -1,1 +1,35 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: plus-jakarta-sans, sans-serif;
+    background-color: #0B1426;
+    color: #ffffff;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(148, 163, 184, 0.5);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeInUp 0.7s ease-out forwards; }
+.fade-up-1 { opacity: 0; animation: 0.7s ease-out 0.15s forwards; }
+.fade-up-2 { opacity: 0; animation: 0.7s ease-out 0.30s forwards; }
+.fade-up-3 { opacity: 0; animation: 0.7s ease-out 0.45s forwards; }
+
+.card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card-hover:hover { transform: translateY(-6px);
+box-shadow: 0 20px 40px rgba(79, 142, 247, 0.18);
+}
+
+.img-zoom { transition: transform 0.4s ease; }
+.img-zoom:hover { transform: scale(1.05); }
