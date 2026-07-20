@@ -1,81 +1,28 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 
 const steps = [
-  { step: 1, title: 'Consultation',   description: 'We talk about your brand, your goals, and what you want your website to say about you.' },
-  { step: 2, title: 'Design',         description: 'I craft a layout and look that reflects your identity and only move forward once you love it.' },
-  { step: 3, title: 'Build & Deploy', description: 'Your website goes live, polished, responsive, and ready to impress.' },
+  { step: 1, title: "Consultation", description: "Understand your brand." },
+  { step: 2, title: "Design", description: "Layout & look approved by you." },
+  { step: 3, title: "Build & Deploy", description: "Website gone live" },
 ];
 
 const HowItWorks = () => {
-  const [visible, setVisible] = useState(false);
-  const [hovered, setHovered] = useState(null);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  const anim = (delay) => ({
-    opacity: visible ? 1 : 0,
-    transform: visible ? 'translateY(0)' : 'translateY(28px)',
-    transition: `opacity 0.7s ease-out ${delay}s, transform 0.7s ease-out ${delay}s`,
-  });
-
-return (
-    <section id="howitworks" ref={ref} style={{ backgroundColor: '#0B1426', padding: '5rem 0' }}>
+  return (
+    <section className="py-16 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div style={{ textAlign: 'center', marginBottom: '3rem', ...anim(0) }}>
-          <span style={{ color: '#F59E0B', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '0.6rem' }}>
-            The Process
-          </span>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', fontWeight: 800, color: '#fff', marginBottom: '1rem' }}>
-            How It Works
-          </h2>
-          <p style={{ color: '#94A3B8', maxWidth: '480px', margin: '0 auto', lineHeight: 1.75 }}>
-            A simple, transparent 3-step process from first conversation to live website.
-          </p>
+        <div className="text-center mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4"> How It Works </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">A simple 3-step process to get your website up and running.</p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+        {steps.map((s) => (
+          <div key={s.step} className="rounded-lg bg-gray-50 p-6 shadow hover:shadow-lg transition">
+            <div className="text-blue-500 text-4xl font-bold mb-4">{s.step}</div>
+            <h3 className="text-xl font-semibold mb-2">{s.title}</h3>
+            <p className="text-gray-600">{s.description}</p>
+          </div>
+        ))}
         </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-          {steps.map((s, i) => (
-            <div key={s.step}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-              style={{
-                backgroundColor: '#162040',
-                border: '1px solid rgba(245,158,11,0.2)',
-                borderRadius: '16px',
-                padding: '2rem',
-                textAlign: 'center',
-                cursor: 'default',
-                transform: hovered === i ? 'translateY(-6px)' : 'translateY(0)',
-                boxShadow: hovered === i ? '0 20px 40px rgba(245,158,11,0.14)' : 'none',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                ...anim(0.15 + i * 0.12),
-              }}
-            >
-              <div style={{
-                width: '56px', height: '56px', borderRadius: '50%',
-                background: 'linear-gradient(135deg, #F59E0B, #D97706)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                margin: '0 auto 1.25rem',
-                fontSize: '1.4rem', fontWeight: 800, color: '#fff',
-                boxShadow: '0 4px 20px rgba(245,158,11,0.3)',
-              }}>
-                {s.step}
-              </div>
-              <h3 style={{ color: '#fff', fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.65rem' }}>{s.title}</h3>
-              <p style={{ color: '#94A3B8', lineHeight: 1.75, margin: 0 }}>{s.description}</p>
-            </div>
-          ))}
-        </div>
-
       </div>
     </section>
   );
