@@ -25,26 +25,47 @@ const WhatIDo = () => {
     transform: visible ? 'translateY(0)' : 'translateY(28px)',
     transition: `opacity 0.7s ease-out ${delay}s, transform 0.7s ease-out ${delay}s`,
   });
-  
+
   return (
-    <section className="bg-gray-50 py-16 sm:py-20">
+    <section id="whatido" ref={ref} style={{ backgroundColor: '#0F1D38', padding: '5rem 0' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4"> What I Do</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            I help professionals turn who they are and what they do into a strong
-            online presence. From layout to final build, I focus on clarity,
-            simplicity, and a professional look that works accros all devices.
+
+        <div style={{ textAlign: 'center', marginBottom: '3rem', ...anim(0) }}>
+          <span style={{ color: '#4F8EF7', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '0.6rem' }}>
+            What I Do
+          </span>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', fontWeight: 800, color: '#fff', marginBottom: '1rem' }}>
+            Everything you need to stand out
+          </h2>
+          <p style={{ color: '#94A3B8', maxWidth: '560px', margin: '0 auto', lineHeight: 1.75 }}>
+            I help professionals turn who they are and what they do into a strong online presence — from layout to final build, focused on clarity and a professional finish that works across all devices.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, idx) => (
-            <div key={idx} className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+          {services.map((s, i) => (
+            <div key={i}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+              style={{
+                backgroundColor: '#162040',
+                border: '1px solid rgba(79,142,247,0.2)',
+                borderRadius: '16px',
+                padding: '2rem',
+                cursor: 'default',
+                transform: hovered === i ? 'translateY(-6px)' : 'translateY(0)',
+                boxShadow: hovered === i ? '0 20px 40px rgba(79,142,247,0.18)' : 'none',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                ...anim(0.15 + i * 0.12),
+              }}
+            >
+              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
+              <h3 style={{ color: '#fff', fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.65rem' }}>{s.title}</h3>
+              <p style={{ color: '#94A3B8', lineHeight: 1.75, margin: 0 }}>{s.description}</p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
