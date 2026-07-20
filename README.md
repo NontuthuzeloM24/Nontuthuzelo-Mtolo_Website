@@ -1,4 +1,4 @@
-# 🌐 Nontuthuzelo Mtolo — Portfolio Website
+# 🌐 Nontuthuzelo Mtolo - Portfolio Website
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
