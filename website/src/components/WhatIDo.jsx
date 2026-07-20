@@ -1,10 +1,31 @@
+import React, { useState, useEffect, useRef } from "react";
+
 const services = [
-  { title: "Custom design", description: "Tailored to your personal brand" },
-  { title: "Responsive Layout", description: "Looks great on all devices" },
-  { title: "Professional Look", description: "Clean, modern, trustworthy" },
+  { icon: '🎨', title: 'Custom design', description: 'Tailored to your personal brand' },
+  { icon: '📱', title: 'Responsive Layout', description: 'Looks great on all devices' },
+  { icon: '💼', title: 'Professional Look', description: 'Clean, modern, trustworthy' },
 ];
 
 const WhatIDo = () => {
+  const [visible, setVisible] = useState(false);
+  const [hovered, setHovered] = useState(null);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.15 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const anim = (delay) => ({
+    opacity: visible ? 1 : 0,
+    transform: visible ? 'translateY(0)' : 'translateY(28px)',
+    transition: `opacity 0.7s ease-out ${delay}s, transform 0.7s ease-out ${delay}s`,
+  });
+  
   return (
     <section className="bg-gray-50 py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
