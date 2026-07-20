@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const services = [
-  { icon: '🎨', title: 'Custom design', description: 'Tailored to your personal brand' },
-  { icon: '📱', title: 'Responsive Layout', description: 'Looks great on all devices' },
-  { icon: '💼', title: 'Professional Look', description: 'Clean, modern, trustworthy' },
+  { icon: '🎨', title: 'Custom Design',     description: 'Tailored to your personal brand - your colours, your voice, your story on every page.' },
+  { icon: '📱', title: 'Responsive Layout', description: 'Looks and works great on every screen, from mobile to widescreen desktop.' },
+  { icon: '✨', title: 'Professional Look', description: 'Clean, modern, trustworthy. A website that works as hard as you do.' },
 ];
 
 const WhatIDo = () => {
@@ -38,7 +38,7 @@ const WhatIDo = () => {
             Everything you need to stand out
           </h2>
           <p style={{ color: '#94A3B8', maxWidth: '560px', margin: '0 auto', lineHeight: 1.75 }}>
-            I help professionals turn who they are and what they do into a strong online presence — from layout to final build, focused on clarity and a professional finish that works across all devices.
+            I help professionals turn who they are and what they do into a strong online presence - from layout to final build, focused on clarity and a professional finish that works across all devices.
           </p>
         </div>
 
