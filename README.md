@@ -6,7 +6,7 @@
 
 ## 📋 Overview
 
-My personal brand and portfolio site — built to showcase my work as a
+My personal brand and portfolio site - built to showcase my work as a
 frontend developer and technical support specialist. Designed with a deep
 navy and blue colour scheme, interactive animations, and a sticky glass-blur
 header for a polished, modern feel.
