@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const steps = [
-  { step: 1, title: "Consultation", description: "Understand your brand." },
-  { step: 2, title: "Design", description: "Layout & look approved by you." },
-  { step: 3, title: "Build & Deploy", description: "Website gone live" },
+  { step: 1, title: 'Consultation',   description: 'We talk about your brand, your goals, and what you want your website to say about you.' },
+  { step: 2, title: 'Design',         description: 'I craft a layout and look that reflects your identity — and only move forward once you love it.' },
+  { step: 3, title: 'Build & Deploy', description: 'Your website goes live, polished, responsive, and ready to impress.' },
 ];
 
 const HowItWorks = () => {
