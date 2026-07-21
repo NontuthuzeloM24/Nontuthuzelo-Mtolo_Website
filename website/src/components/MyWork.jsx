@@ -53,40 +53,90 @@ const MyWork = () => {
   });
 
   return (
-    <section id="mywork" className="bg-gray-50 py-16 sm:py-20">
+    <section id="mywork" ref={ref} style={{ backgroundColor: '#0F1D38', padding: '5rem 0' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-4">My Work</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Example of projects I have designed and built, including school
-          projects demonstrating frontend skills.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, idx) => (
-          <div key={idx}
-          className="bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden flex flex-col"
-          >
-            <img src={project.image} alt={project.title} 
-            className="w-full h-48 object-cover"
-            />
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-              <p className="text-gray-600 mb-4 flex-1">{project.description}</p>
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition text-sm text-center"
-                >
-                  View Project →
-                </a>
-              )}
+
+        <div style={{ textAlign: 'center', marginBottom: '3rem', ...anim(0) }}>
+          <span style={{ color: '#4F8EF7', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '0.6rem' }}>
+            Portfolio
+          </span>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', fontWeight: 800, color: '#fff', marginBottom: '1rem' }}>
+            My Work
+          </h2>
+          <p style={{ color: '#94A3B8', maxWidth: '500px', margin: '0 auto', lineHeight: 1.75 }}>
+            Projects I've designed and built - from school assignments to real deployments.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          {projects.map((p, i) => (
+            <div key={i}
+              onMouseEnter={() => setHoveredCard(i)}
+              onMouseLeave={() => setHoveredCard(null)}
+              style={{
+                backgroundColor: '#162040',
+                border: '1px solid rgba(79,142,247,0.2)',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                transform: hoveredCard === i ? 'translateY(-6px)' : 'translateY(0)',
+                boxShadow: hoveredCard === i ? '0 20px 40px rgba(79,142,247,0.18)' : 'none',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                ...anim(0.15 + i * 0.12),
+              }}
+            >
+              {/* Image with zoom */}
+              <div style={{ overflow: 'hidden' }}>
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  onMouseEnter={() => setHoveredImg(i)}
+                  onMouseLeave={() => setHoveredImg(null)}
+                  style={{
+                    width: '100%',
+                    height: '200px',
+                    objectFit: 'cover',
+                    display: 'block',
+                    transform: hoveredImg === i ? 'scale(1.05)' : 'scale(1)',
+                    transition: 'transform 0.4s ease',
+                  }}
+                />
+              </div>
+
+              {/* Card body */}
+              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <h3 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>{p.title}</h3>
+                <p style={{ color: '#94A3B8', lineHeight: 1.7, flex: 1, marginBottom: '1.25rem' }}>{p.description}</p>
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onMouseEnter={() => setHoveredBtn(i)}
+                    onMouseLeave={() => setHoveredBtn(null)}
+                    style={{
+                      display: 'inline-block',
+                      textAlign: 'center',
+                      border: '1px solid #4F8EF7',
+                      backgroundColor: hoveredBtn === i ? '#4F8EF7' : 'transparent',
+                      color: hoveredBtn === i ? '#fff' : '#4F8EF7',
+                      padding: '0.6rem 1.2rem',
+                      borderRadius: '8px',
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      textDecoration: 'none',
+                      transition: 'background-color 0.2s, color 0.2s',
+                    }}
+                  >
+                    View Project →
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
