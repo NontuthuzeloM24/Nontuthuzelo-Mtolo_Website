@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 
 const projects = [
   {
-    title: "Portfolio Website",
-    description: "A personal portfolio to showcase my work.",
-    image: "/assets/myportfolio.png",
-    link: "https://code-with-nontu.netlify.app/",
+    title: "kanban Task Manager",
+    description: "A web app for managing tasks and projects with a kanban board interface.",
+    image: "/assets/kanban-task.png",
+    link: "https://nontuthuzelo-mtolo-jslpp.netlify.app/",
   },
   {
     title: "Podcast App",
