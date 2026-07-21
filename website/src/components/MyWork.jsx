@@ -22,6 +22,27 @@ const projects = [
 ];
 
 const MyWork = () => {
+  const [visible, setVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredImg, setHoveredImg] = useState(null);
+  const [hoveredBtn, setHoveredBtn] = useState(null);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.15 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const anim = (delay) => ({
+    opacity: visible ? 1 : 0,
+    transform: visible ? 'translateY(0)' : 'translateY(28px)',
+    transition: `opacity 0.7s ease-out ${delay}s, transform 0.7s ease-out ${delay}s`,
+  });
+
   return (
     <section id="mywork" className="bg-gray-50 py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
