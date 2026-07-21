@@ -12,11 +12,20 @@ const WhatIDo = () => {
   const ref = useRef(null);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      setVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
