@@ -1,23 +1,152 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Contacts = () => {
+  const [visible, setVisible] = useState(false);
+  const [focused, setFocused] = useState(null);
+  const [btnHovered, setBtnHovered] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      setVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const anim = (delay) => ({
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0)" : "translateY(28px)",
+    transition: `opacity 0.7s ease-out ${delay}s, transform 0.7s ease-out ${delay}s`,
+  });
+
+  const inputStyle = (name) => ({
+    backgroundColor: "#162040",
+    border: `1px solid ${focused === name ? "#4F8EF7" : "rgba(79,142,247,0.22)"}`,
+    borderRadius: "10px",
+    padding: "0.85rem 1rem",
+    color: "#fff",
+    fontSize: "1rem",
+    outline: "none",
+    width: "100%",
+    fontFamily: "inherit",
+    transition: "border-color 0.2s",
+    boxSizing: "border-box",
+  });
+
   return (
-    <section className="bg-white py-16 sm:py-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-4">Contact</h2>
-        <p className="text-gray-600">
-          Ready to present your personal brand professionally online? Let's work
-          together to build a website that represents you.
-        </p>
+    <section
+      id="contact"
+      ref={ref}
+      style={{ backgroundColor: "#0B1426", padding: "5rem 0" }}
+    >
+      <div style={{ maxWidth: "620px", margin: "0 auto", padding: "0 1.5rem" }}>
+        <div
+          style={{ textAlign: "center", marginBottom: "2.5rem", ...anim(0) }}
+        >
+          <span
+            style={{
+              color: "#F59E0B",
+              fontWeight: 700,
+              fontSize: "0.8rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              display: "block",
+              marginBottom: "0.6rem",
+            }}
+          >
+            Let's Talk
+          </span>
+          <h2
+            style={{
+              fontSize: "clamp(1.8rem, 3vw, 2.4rem)",
+              fontWeight: 800,
+              color: "#fff",
+              marginBottom: "1rem",
+            }}
+          >
+            Get In Touch
+          </h2>
+          <p style={{ color: "#94A3B8", lineHeight: 1.75 }}>
+            Ready to present your personal brand professionally online? Let's
+            build a website that truly represents you.
+          </p>
         </div>
-        <form className="grid gap-6">
-          <input type="text" placeholder="Your Name" required className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-          <input type="email" placeholder="Your Email" required className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-          <textarea placeholder="Your Message" required className="border border-gray-300 rounded-lg p-3 h-32 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-          <button type="submit" className="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition">Get in Touch</button>
+
+        <form style={{ display: "grid", gap: "1.25rem" }}>
+          <div style={anim(0.15)}>
+            <input
+              type="text"
+              placeholder="Your Name"
+              required
+              style={inputStyle("name")}
+              onFocus={() => setFocused("name")}
+              onBlur={() => setFocused(null)}
+            />
+          </div>
+          <div style={anim(0.28)}>
+            <input
+              type="email"
+              placeholder="Your Email"
+              required
+              style={inputStyle("email")}
+              onFocus={() => setFocused("email")}
+              onBlur={() => setFocused(null)}
+            />
+          </div>
+          <div style={anim(0.41)}>
+            <textarea
+              placeholder="Your Message"
+              required
+              style={{
+                ...inputStyle("message"),
+                height: "9rem",
+                resize: "vertical",
+              }}
+              onFocus={() => setFocused("message")}
+              onBlur={() => setFocused(null)}
+            />
+          </div>
+          <div style={anim(0.54)}>
+            <button
+              type="submit"
+              onMouseEnter={() => setBtnHovered(true)}
+              onMouseLeave={() => setBtnHovered(false)}
+              style={{
+                width: "100%",
+                background: "linear-gradient(135deg, #4F8EF7, #3B7DDD)",
+                color: "#fff",
+                border: "none",
+                padding: "0.9rem 2rem",
+                borderRadius: "10px",
+                fontWeight: 700,
+                fontSize: "1rem",
+                cursor: "pointer",
+                fontFamily: "inherit",
+                boxShadow: btnHovered
+                  ? "0 8px 28px rgba(79,142,247,0.5)"
+                  : "0 4px 20px rgba(79,142,247,0.35)",
+                transform: btnHovered ? "translateY(-2px)" : "translateY(0)",
+                transition: "transform 0.2s, box-shadow 0.2s",
+              }}
+            >
+              Get in Touch →
+            </button>
+          </div>
         </form>
-        </div>
+      </div>
     </section>
   );
 };
