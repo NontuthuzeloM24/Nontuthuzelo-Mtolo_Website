@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-@import "tailwindcss";
 
+*, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B1426; color: #ffffff; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B1426; color: #ffffff; margin: 0; padding: 0; }
 input::placeholder, textarea::placeholder { color: rgba(148, 163, 184, 0.5); }
